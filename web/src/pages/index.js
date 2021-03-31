@@ -1,14 +1,11 @@
 import React from "react";
-import Container from "../components/container";
-import Layout from "../containers/layout";
+import Layout from "../components/layout";
 
 const IndexPage = () => {
   return (
-    <Layout>
-      <Container>
-        <h1>test</h1>
-      </Container>
-    </Layout>
+    <>
+      <Layout>test</Layout>
+    </>
   );
 };
 

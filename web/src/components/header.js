@@ -1,33 +1,26 @@
 import { Link } from "gatsby";
 import React from "react";
-import Icon from "./icon";
-import { cn } from "../lib/helpers";
 
-import * as styles from "./header.module.css";
+import * as styles from "../styles/header.module.css";
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
-  <div className={styles.root}>
-    <div className={styles.wrapper}>
-      <div className={styles.branding}>
-        <Link to="/">{siteTitle}</Link>
-      </div>
-
-      <button
-        className={styles.toggleNavButton}
-        onClick={showNav ? onHideNav : onShowNav}
-      >
-        <Icon symbol="hamburger" />
-      </button>
-
-      <nav className={cn(styles.nav, showNav && styles.showNav)}>
-        <ul>
-          <li>
-            <Link to="/archive/">Archive</Link>
+const Header = ({ siteTitle }) => {
+  return (
+    <div className={styles.root}>
+      <div className={styles.wrapper}>
+        <div className={styles.branding}>
+          <Link to="/">{siteTitle}</Link>
+        </div>
+        <nav className={styles.nav}>
+          <li className={styles.branding}>
+            <Link to="/projects/">Projects</Link>
           </li>
-        </ul>
-      </nav>
+          <li className={styles.branding}>
+            <Link to="/contact/">Contact</Link>
+          </li>
+        </nav>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Header;
