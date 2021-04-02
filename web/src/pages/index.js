@@ -1,10 +1,12 @@
 import React from "react";
-import Layout from "../components/layout";
+import "normalize.css";
+import GlobalStyles from "../styles/GlobalStyles";
 
 const IndexPage = () => {
   return (
     <>
-      <Layout>test</Layout>
+      <GlobalStyles />
+      <h1>I am indexPage</h1>
     </>
   );
 };
