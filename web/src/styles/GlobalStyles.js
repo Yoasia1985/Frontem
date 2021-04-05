@@ -11,8 +11,6 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     font-size: 2rem;
-    background: var(--black);
-    color: var(--grey);
   }
 `;
 
