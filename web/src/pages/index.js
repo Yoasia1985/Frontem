@@ -1,17 +1,27 @@
 import React from "react";
 import styled from "styled-components";
-
 const IndexContainer = styled.div`
-  width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  h1 {
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-family: "Indigo Regular";
+    letter-spacing: 3px;
+    color: var(--black);
+  }
 `;
+
 const IndexPage = () => {
   return (
     <>
       <IndexContainer>
-        <h1>I am indexPage</h1>
+        <h1>Mirek Ostafinski</h1>
+        <p>front-end developer</p>
       </IndexContainer>
     </>
   );
