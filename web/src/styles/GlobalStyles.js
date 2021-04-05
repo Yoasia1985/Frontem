@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import "normalize.css";
 
 const GlobalStyles = createGlobalStyle`
       :root {
@@ -8,11 +9,10 @@ const GlobalStyles = createGlobalStyle`
     --white: #fff;
     --grey: #efefef;
   }
-  html {
-    font-size: 10px;
-  }
   body {
     font-size: 2rem;
+    background: var(--black);
+    color: var(--grey);
   }
 `;
 
