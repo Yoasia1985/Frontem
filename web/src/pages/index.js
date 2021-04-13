@@ -6,8 +6,6 @@ const IndexContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  z-index: 2;
   h1 {
     font-size: clamp(3.5rem, 10vw, 7rem);
     font-family: "Indigo Regular";
