@@ -1,5 +1,6 @@
 import React from "react";
 import emailjs from "emailjs-com";
+import Swal from "sweetalert2";
 import styled from "styled-components";
 
 const FormStyles = styled.form`
@@ -44,6 +45,7 @@ export default function ContactForm() {
       .then(
         (result) => {
           console.log(result.text);
+          Swal.fire({ icon: "success", text: "Email Send!" });
         },
         (error) => {
           console.log(error.text);
