@@ -1,4 +1,5 @@
 import React from "react";
+import ContactForm from "../components/ContactForm";
 import styled from "styled-components";
 const IndexContainer = styled.div`
   height: 100%;
@@ -20,6 +21,7 @@ const IndexPage = () => {
       <IndexContainer>
         <h1>Mirek Ostafinski</h1>
         <p>front-end developer</p>
+        <ContactForm />
       </IndexContainer>
     </>
   );
