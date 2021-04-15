@@ -8,7 +8,10 @@ const IndexContainer = styled.div`
   align-items: center;
   justify-content: center;
   h1 {
-    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-size: min(max(3.75rem, 3vw), 7rem);
+    @supports (font-size: clamp(3.75rem, 3vw, 7rem)) {
+      font-size: clamp(3.75rem, 3vw, 7rem);
+    }
     font-family: "Indigo Regular";
     letter-spacing: 3px;
     color: var(--black);
