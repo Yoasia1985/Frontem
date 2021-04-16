@@ -1,5 +1,7 @@
 import React from "react";
+import { graphql } from "gatsby";
 import styled from "styled-components";
+import Logo from "../components/Logo";
 import ContactForm from "../components/ContactForm";
 
 const MainStyles = styled.main`
@@ -15,14 +17,20 @@ const MainStyles = styled.main`
   }
 `;
 
+export const query = graphql`
+  query MyQuery {
+    github {
+      viewer {
+        avatarUrl(size: 10)
+      }
+    }
+  }
+`;
 const IndexPage = () => {
   return (
     <>
       <MainStyles>
-        <h1>Mirek Ostafinski</h1>
-        <p>
-          I&apos;m a web developer passionate about building web applications.
-        </p>
+        <Logo />
       </MainStyles>
       <ContactForm />
     </>
