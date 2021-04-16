@@ -7,37 +7,63 @@ import styled from "styled-components";
 const FormStyles = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr;
-
+  grid-column-gap: 1rem;
+  grid-template-rows: repeat(2, min-content) 1fr min-content;
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
-    grid-auto-rows: auto;
+    grid-template-rows: repeat(5, min-content);
+    padding: 2.5rem 3.5rem;
+  }
+  h2 {
+    grid-column: 1/-1;
+    grid-row: 1 / 2;
+    color: var(--violet);
+    font-family: "Indigo Regular";
+    font-size: min(max(3.75rem, 3vw), 4rem);
+    @supports (font-size: clamp(1.75rem, 3vw, 4rem)) {
+      font-size: clamp(3.75rem, 3vw, 4rem);
+    }
   }
   .field {
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-    &:nth-child(1) {
-      grid-column: 1/2;
-      margin-right: 10px;
-      @media (max-width: 640px) {
-        margin-right: 0;
-      }
-    }
     &:nth-child(2) {
-      grid-column: 2/3;
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
       @media (max-width: 640px) {
-        grid-column: 1/-1;
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
       }
     }
     &:nth-child(3) {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      @media (max-width: 640px) {
+        grid-column: 1 / -1;
+        grid-row: 3 / 4;
+      }
+    }
+    &:nth-child(4) {
+      height: 450px;
       grid-column: 1 / -1;
-      min-height: 450px;
+      grid-row: 3 / 4;
       textarea {
         resize: none;
         height: 100%;
         padding: 14px 10px;
         color: var(--black);
+        border: none;
+        outline: none;
+        border: 2px solid var(--violet-opacity);
+        transition: border 0.2s ease-in-out;
+        &:focus {
+          border: 2px solid var(--yellow);
+        }
+      }
+      @media (max-width: 640px) {
+        grid-column: 1 / -1;
+        grid-row: 4 / 5;
       }
     }
   }
@@ -51,8 +77,16 @@ const FormStyles = styled.form`
     min-width: 250px;
     line-height: 1.5;
     font-size: 14px;
-    padding: 14px 10px;
+    padding: 8px 12px;
     color: var(--black);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid var(--violet-opacity);
+    transition: border 0.2s ease-in-out;
+    &:focus {
+      border: 2px solid var(--yellow);
+    }
   }
   input[type="submit"] {
     grid-column: 1 / 2;
@@ -61,10 +95,14 @@ const FormStyles = styled.form`
     border-radius: 5px;
     padding: 16px 28px;
     font-size: 18px;
-    background-color: var(--yellow);
-    color: var(--black);
+    background-color: var(--violet);
+    color: var(--yellow);
     box-shadow: var(--boxShadow);
     border: none;
+    outline: none;
+    &:focus {
+      border: 2px solid var(--yellow);
+    }
   }
 `;
 
@@ -99,6 +137,7 @@ export default function ContactForm() {
   };
   return (
     <FormStyles onSubmit={handleSubmit(onSubmit)}>
+      <h2>Contact</h2>
       <p className="field">
         <label htmlFor="name">Name:</label>
         <input
