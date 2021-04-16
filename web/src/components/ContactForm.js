@@ -5,14 +5,45 @@ import Swal from "sweetalert2";
 import styled from "styled-components";
 
 const FormStyles = styled.form`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
   .field {
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    &:nth-child(1) {
+      grid-column: 1/2;
+      margin-right: 10px;
+      @media (max-width: 640px) {
+        margin-right: 0;
+      }
+    }
+    &:nth-child(2) {
+      grid-column: 2/3;
+      @media (max-width: 640px) {
+        grid-column: 1/-1;
+      }
+    }
+    &:nth-child(3) {
+      grid-column: 1 / -1;
+      min-height: 450px;
+      textarea {
+        resize: none;
+        height: 100%;
+        padding: 14px 10px;
+        color: var(--black);
+      }
+    }
   }
-
   .field label {
     display: block;
-    font-size: 12px;
-    color: #777;
+    font-size: 14px;
   }
 
   .field input {
@@ -20,14 +51,19 @@ const FormStyles = styled.form`
     min-width: 250px;
     line-height: 1.5;
     font-size: 14px;
+    padding: 14px 10px;
+    color: var(--black);
   }
-
   input[type="submit"] {
+    grid-column: 1 / 2;
+    justify-self: left;
     display: block;
-    padding: 6px 30px;
-    font-size: 14px;
-    background-color: #4460aa;
-    color: #fff;
+    border-radius: 5px;
+    padding: 16px 28px;
+    font-size: 18px;
+    background-color: var(--yellow);
+    color: var(--black);
+    box-shadow: var(--boxShadow);
     border: none;
   }
 `;
@@ -64,10 +100,10 @@ export default function ContactForm() {
   return (
     <FormStyles onSubmit={handleSubmit(onSubmit)}>
       <p className="field">
-        <label htmlFor="name">Your name:</label>
+        <label htmlFor="name">Name:</label>
         <input
           id="name"
-          name="multipleErrorInput"
+          name="name"
           type="text"
           {...register("name", {
             required: "This field is required",
@@ -79,10 +115,10 @@ export default function ContactForm() {
         )}
       </p>
       <p className="field">
-        <label htmlFor="email">Your Email:</label>
+        <label htmlFor="email">Email:</label>
         <input
           id="email"
-          name="multipleErrorInput"
+          name="email"
           type="email"
           {...register("email", {
             required: "This field is required",
