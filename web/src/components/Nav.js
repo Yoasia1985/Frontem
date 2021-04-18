@@ -3,29 +3,30 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 
 const NavStyles = styled.nav`
-  height: 9rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   ul {
-    height: 100%;
+    width: min(50ch, calc(100% - 64px));
     display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
+    justify-content: flex-end;
   }
-  li {
+  a {
     margin-right: 3rem;
     transform: rotate(-3deg);
     transition: all 0.3s ease;
     border-bottom: 3px solid transparent;
+    font-size: 2.2rem;
+    font-family: "Merriweather", serif;
+    text-decoration: none;
+    color: var(--color-form);
     &:hover {
       transform: rotate(3deg);
       border-bottom: 3px solid var(--yellow);
     }
-    a {
-      font-family: "Indigo Regular";
-      font-size: 2.5rem;
-      text-decoration: none;
-      text-transform: uppercase;
-      color: var(--violet);
+    &:last-child {
+      margin: 0;
     }
   }
 `;
@@ -34,12 +35,9 @@ export default function Nav() {
     <>
       <NavStyles>
         <ul>
-          <li>
-            <Link to="/">home</Link>
-          </li>
-          <li>
-            <Link to="/blog/">Blog</Link>
-          </li>
+          <Link to="/">home</Link>
+          <Link to="/blog/">blog</Link>
+          <Link to="https://github.com/ostafinskim">github</Link>
         </ul>
       </NavStyles>
     </>
