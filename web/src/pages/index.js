@@ -1,5 +1,4 @@
 import React from "react";
-import { graphql } from "gatsby";
 import styled from "styled-components";
 import ContactForm from "../components/ContactForm";
 import Stack from "../components/Stack";
@@ -54,16 +53,7 @@ const MainStyles = styled.main`
   }
 `;
 
-export const query = graphql`
-  query MyQuery {
-    github {
-      viewer {
-        avatarUrl(size: 1000)
-      }
-    }
-  }
-`;
-const IndexPage = ({ data }) => {
+const IndexPage = () => {
   return (
     <>
       <MainStyles>
@@ -75,9 +65,7 @@ const IndexPage = ({ data }) => {
               I&#39;m Miro.
               <span>front-end developer</span>
             </h1>
-            <div className="pic">
-              <img src={data.github.viewer.avatarUrl} alt="Me." />
-            </div>
+            <div className="pic"></div>
           </div>
         </section>
         <Stack />
