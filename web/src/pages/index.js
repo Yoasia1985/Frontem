@@ -1,111 +1,89 @@
 import React from "react";
 import { graphql } from "gatsby";
-import {
-  filterOutDocsPublishedInTheFuture,
-  filterOutDocsWithoutSlugs,
-  mapEdgesToNodes,
-} from "../lib/helpers";
-import BlogPostPreviewList from "../components/blog-post-preview-list";
-import Container from "../components/container";
-import GraphQLErrorList from "../components/graphql-error-list";
-import SEO from "../components/seo";
-import Layout from "../containers/layout";
+import styled from "styled-components";
+import ContactForm from "../components/ContactForm";
+import Stack from "../components/Stack";
 
-export const query = graphql`
-  fragment SanityImage on SanityMainImage {
-    crop {
-      _key
-      _type
-      top
-      bottom
-      left
-      right
+const MainStyles = styled.main`
+  grid-column: 1 / -1;
+  margin-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content 1fr;
+  p {
+    text-align: center;
+  }
+  .wrapper {
+    padding: 2.5rem;
+    width: min(70ch, calc(100% - 64px));
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  h1 {
+    font-size: min(max(3.75rem, 3vw), 9rem);
+    @supports (font-size: clamp(3.75rem, 3vw, 9rem)) {
+      font-size: clamp(3.75rem, 3vw, 9rem);
     }
-    hotspot {
-      _key
-      _type
-      x
-      y
-      height
-      width
-    }
-    asset {
-      _id
+    font-family: "Merriweather", serif;
+    letter-spacing: 3px;
+    color: var(--color-bg);
+    span {
+      color: var(--black);
+      font-size: 1.6rem;
+      display: block;
+      font-family: monospace;
     }
   }
-
-  query IndexPageQuery {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      title
-      description
-      keywords
-    }
-    posts: allSanityPost(
-      limit: 6
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-    ) {
-      edges {
-        node {
-          id
-          publishedAt
-          mainImage {
-            ...SanityImage
-            alt
-          }
-          title
-          _rawExcerpt
-          slug {
-            current
-          }
-        }
-      }
+  .pic {
+    width: 200px;
+    height: 200px;
+    border: double 6px transparent;
+    box-shadow: var(--boxShadow);
+    border-radius: 50%;
+    background-image: radial-gradient(
+      circle at bottom right,
+      var(--color-form),
+      var(--color-form)
+    );
+    background-origin: border-box;
+    img {
+      height: 100%;
+      border-radius: 50%;
     }
   }
 `;
 
-const IndexPage = (props) => {
-  const { data, errors } = props;
-
-  if (errors) {
-    return (
-      <Layout>
-        <GraphQLErrorList errors={errors} />
-      </Layout>
-    );
+export const query = graphql`
+  query MyQuery {
+    github {
+      viewer {
+        avatarUrl(size: 1000)
+      }
+    }
   }
-
-  const site = (data || {}).site;
-  const postNodes = (data || {}).posts
-    ? mapEdgesToNodes(data.posts)
-        .filter(filterOutDocsWithoutSlugs)
-        .filter(filterOutDocsPublishedInTheFuture)
-    : [];
-
-  if (!site) {
-    throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
-    );
-  }
-
+`;
+const IndexPage = ({ data }) => {
   return (
-    <Layout>
-      <SEO
-        title={site.title}
-        description={site.description}
-        keywords={site.keywords}
-      />
-      <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
-        {postNodes && (
-          <BlogPostPreviewList
-            title="Latest blog posts"
-            nodes={postNodes}
-            browseMoreHref="/archive/"
-          />
-        )}
-      </Container>
-    </Layout>
+    <>
+      <MainStyles>
+        <section className="hero">
+          <div className="wrapper">
+            <h1>
+              Hi!
+              <br />
+              I&#39;m Miro.
+              <span>front-end developer</span>
+            </h1>
+            <div className="pic">
+              <img src={data.github.viewer.avatarUrl} alt="Me." />
+            </div>
+          </div>
+        </section>
+        <Stack />
+      </MainStyles>
+      <ContactForm />
+    </>
   );
 };
 
