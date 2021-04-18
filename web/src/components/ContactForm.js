@@ -4,104 +4,113 @@ import emailjs from "emailjs-com";
 import Swal from "sweetalert2";
 import styled from "styled-components";
 
-const FormStyles = styled.form`
+const FormStyles = styled.section`
+  background: rgb(27, 160, 152);
+  border-radius: 0.6rem;
+  padding: 2.4rem;
+  margin-bottom: 4.8rem;
+  box-shadow: var(--boxShadow);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 1rem;
-  grid-template-rows: repeat(2, min-content) 1fr min-content;
-  @media (max-width: 640px) {
+  grid-template-rows: max-content 1fr;
+  @media (max-width: 860px) {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(5, min-content);
-    padding: 2.5rem 3.5rem;
+    .inner {
+      grid-column: 1/-1;
+      grid-row: 1/2;
+    }
+    .form {
+      grid-column: 1/-1;
+      grid-row: 2 / 3;
+      grid-template-columns: 1fr;
+      .input-wrapper {
+        grid-column: 1/-1;
+        grid-row: 1/2;
+      }
+      .msg {
+        grid-column: 1/-1;
+        grid-row: 2/3;
+      }
+    }
   }
-  h2 {
-    grid-column: 1/-1;
+  .inner {
+    grid-column: 1 / -1;
     grid-row: 1 / 2;
-    color: var(--violet);
-    font-family: "Indigo Regular";
-    font-size: min(max(3.75rem, 3vw), 4rem);
-    @supports (font-size: clamp(1.75rem, 3vw, 4rem)) {
-      font-size: clamp(3.75rem, 3vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h3 {
+      font-family: "Merriweather", serif;
+      font-weight: bolder;
+      letter-spacing: 3px;
+      color: var(--color-bg);
+      font-size: min(max(2.75rem, 3vw), 3.2rem);
+      @supports (font-size: clamp(1.75rem, 3vw, 3.2rem)) {
+        font-size: clamp(2.75rem, 3vw, 3.2rem);
+      }
+    }
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .form {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-auto-rows: min-content;
+    grid-column-gap: 2rem;
+    input[type="submit"] {
+      grid-column: 1 / -1;
+      justify-self: center;
+      border: none;
+      border-radius: 0.8rem;
+      background: rgb(5, 22, 34);
+      padding: 1.2rem 9rem;
+      font-size: 2rem;
+      text-transform: uppercase;
+      color: white;
+      cursor: pointer;
+      box-shadow: var(--boxShadow);
+      &:hover {
+        transform: scale(1.025);
+      }
     }
   }
   .field {
-    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-    &:nth-child(2) {
-      grid-column: 1 / 2;
-      grid-row: 2 / 3;
-      @media (max-width: 640px) {
-        grid-column: 1 / -1;
-        grid-row: 2 / 3;
+    label {
+      margin-bottom: 1rem;
+    }
+    input {
+      width: 100%;
+      padding: 1.2rem 1rem;
+      border: none;
+      border-radius: 8px;
+      &:focus {
+        outline-color: var(--yellow);
       }
     }
-    &:nth-child(3) {
-      grid-column: 2 / 3;
-      grid-row: 2 / 3;
-      @media (max-width: 640px) {
-        grid-column: 1 / -1;
-        grid-row: 3 / 4;
-      }
-    }
-    &:nth-child(4) {
-      height: 450px;
-      grid-column: 1 / -1;
-      grid-row: 3 / 4;
-      textarea {
-        resize: none;
-        height: 100%;
-        padding: 14px 10px;
-        color: var(--black);
-        border: none;
-        outline: none;
-        border: 2px solid var(--violet-opacity);
-        transition: border 0.2s ease-in-out;
-        &:focus {
-          border: 2px solid var(--yellow);
-        }
-      }
-      @media (max-width: 640px) {
-        grid-column: 1 / -1;
-        grid-row: 4 / 5;
+    textarea {
+      resize: none;
+      min-height: 16rem;
+      padding: 1.2rem 1rem;
+      border: none;
+      border-radius: 8px;
+      &:focus {
+        outline-color: var(--yellow);
       }
     }
   }
-  .field label {
-    display: block;
-    font-size: 14px;
-  }
-
-  .field input {
-    display: block;
-    min-width: 250px;
-    line-height: 1.5;
-    font-size: 14px;
-    padding: 8px 12px;
-    color: var(--black);
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    border: 2px solid var(--violet-opacity);
-    transition: border 0.2s ease-in-out;
-    &:focus {
-      border: 2px solid var(--yellow);
-    }
-  }
-  input[type="submit"] {
-    grid-column: 1 / 2;
-    justify-self: left;
-    display: block;
-    border-radius: 5px;
-    padding: 16px 28px;
-    font-size: 18px;
-    background-color: var(--violet);
-    color: var(--yellow);
-    box-shadow: var(--boxShadow);
-    border: none;
-    outline: none;
-    &:focus {
-      border: 2px solid var(--yellow);
+  .input-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 861px) {
+      align-items: center;
+      justify-content: space-between;
     }
   }
 `;
@@ -137,50 +146,75 @@ export default function ContactForm() {
   };
   return (
     <FormStyles onSubmit={handleSubmit(onSubmit)}>
-      <h2>Contact</h2>
-      <p className="field">
-        <label htmlFor="name">Name:</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          {...register("name", {
-            required: "This field is required",
-            minLength: 3,
-          })}
-        />
-        {errors.name && (
-          <span style={{ color: "red" }}>{errors.name.message}</span>
-        )}
-      </p>
-      <p className="field">
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          {...register("email", {
-            required: "This field is required",
-            pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: "Enter valid email address",
-            },
-          })}
-        />
-        {errors.email && (
-          <span style={{ color: "red" }}>{errors.email.message}</span>
-        )}
-      </p>
-      <p className="field">
-        <label htmlFor="message">Message:</label>
-        <textarea
-          id="message"
-          name="message"
-          type="text"
-          {...register("message")}
-        />
-      </p>
-      <input type="submit" value="send!" />
+      <div className="inner">
+        <h3>Contact me</h3>
+      </div>
+      <form className="form">
+        <div className="input-wrapper">
+          <p className="field">
+            <label htmlFor="name">Name:</label>
+            {errors.name && (
+              <span
+                style={{
+                  color: "#a01b23",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                {errors.name.message}
+              </span>
+            )}
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Your name"
+              {...register("name", {
+                required: "This field is required",
+                minLength: 3,
+              })}
+            />
+          </p>
+          <p className="field">
+            <label htmlFor="email">Email:</label>
+            {errors.email && (
+              <span
+                style={{
+                  color: "#a01b23",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                {errors.email.message}
+              </span>
+            )}
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Your email"
+              {...register("email", {
+                required: "This field is required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Enter valid email address",
+                },
+              })}
+            />
+          </p>
+        </div>
+        <div className="msg">
+          <p className="field">
+            <label htmlFor="message">Message:</label>
+            <textarea
+              id="message"
+              name="message"
+              type="text"
+              placeholder="Your message"
+              {...register("message")}
+            />
+          </p>
+        </div>
+        <input type="submit" value="Submit" />
+      </form>
     </FormStyles>
   );
 }
