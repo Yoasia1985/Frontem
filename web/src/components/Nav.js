@@ -5,15 +5,15 @@ import styled from "styled-components";
 const NavStyles = styled.nav`
   height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
   ul {
-    width: min(50ch, calc(100% - 64px));
+    width: 100%;
     display: flex;
     justify-content: flex-end;
+    margin-right: 1rem;
   }
   a {
-    margin-right: 3rem;
+    margin-right: 2rem;
     transform: rotate(-3deg);
     transition: all 0.3s ease;
     border-bottom: 3px solid transparent;

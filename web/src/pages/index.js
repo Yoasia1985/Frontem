@@ -4,20 +4,23 @@ import ContactForm from "../components/ContactForm";
 import Stack from "../components/Stack";
 
 const MainStyles = styled.main`
-  grid-column: 1 / -1;
+  width: 100%;
   margin-bottom: 2.5rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content 1fr;
+  .hero {
+    display: flex;
+    justify-content: space-around;
+    @media (max-width: 485px) {
+      flex-direction: column-reverse;
+      h1 {
+        text-align: center;
+      }
+    }
+  }
   p {
     text-align: center;
-  }
-  .wrapper {
-    padding: 2.5rem;
-    width: min(70ch, calc(100% - 64px));
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-evenly;
   }
   h1 {
     font-size: min(max(3.75rem, 3vw), 9rem);
@@ -35,6 +38,7 @@ const MainStyles = styled.main`
     }
   }
   .pic {
+    align-self: center;
     width: 200px;
     height: 200px;
     border: double 6px transparent;
@@ -58,15 +62,13 @@ const IndexPage = () => {
     <>
       <MainStyles>
         <section className="hero">
-          <div className="wrapper">
-            <h1>
-              Hi!
-              <br />
-              I&#39;m Miro.
-              <span>front-end developer</span>
-            </h1>
-            <div className="pic"></div>
-          </div>
+          <h1>
+            Hi!
+            <br />
+            I&#39;m Miro.
+            <span>front-end developer</span>
+          </h1>
+          <div className="pic"></div>
         </section>
         <Stack />
       </MainStyles>

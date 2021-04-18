@@ -16,12 +16,10 @@ import next from "../assets/icons/next.svg";
 import typescript from "../assets/icons/typescript.svg";
 
 const StackStyled = styled.div`
-  max-width: min(65ch, calc(100% - 64px));
   margin: 0 auto;
   width: 100%;
   .stack {
     margin: 5rem 0;
-    padding: 2rem;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -38,6 +36,10 @@ const StackStyled = styled.div`
       }
     }
     h2 {
+      font-size: min(max(2.3rem, 3vw), 3.4rem);
+      @supports (font-size: clamp(2.3rem, 3vw, 3.4rem)) {
+        font-size: clamp(2.3rem, 3vw, 3.4rem);
+      }
       color: var(--color-bg);
       font-size: 3.2rem;
       grid-row: 1 / 2;

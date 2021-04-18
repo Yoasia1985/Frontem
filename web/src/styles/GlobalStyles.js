@@ -25,6 +25,9 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.65rem;
     background: #EFEDE7;
     color: rgba(0, 0, 0, 0.9);
+    @media (max-width: 475px) {
+      padding: 16px;
+    }
   }
   a, input {
     outline-color: var(--yellow);
