@@ -1,37 +1,33 @@
 import { createGlobalStyle } from "styled-components";
-import bg from "../assets/bg.png";
 import "normalize.css";
 
 const GlobalStyles = createGlobalStyle`
       :root {
-    --red: #FF4949;
-    --syntax-del: #FF5555;
     --black: #2E2E2E;
     --yellow: #ffc600;
     --white: #fff;
-    --violet: rgb(155, 109, 255);
-    --violet-opacity: rgba(155, 109, 255, .2);
-    --grey: #f6f9fb;
-    --grey-secondary: #dde4e9;
-    --grey-darker: #474f5b;
     --boxShadow: 0 6px 16px 0 rgb(0 0 0 / 14%);
-    --syntax-comment: #6c8998;
-    --syntax-prop: #FF39A8;
-    --syntax-bool: #FFD600;
-    --syntax-val: #61747D;
-    --syntax-name: #C653FF;
-    --syntax-regex: #ffd700;
-    --syntax-fn: rgb(0, 190, 255);
+    --color-form: #1BA098;
+    --color-bg: rgb(5, 22, 34);
   }
   * {
     box-sizing: inherit;
   }
   html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.5;
   }
   body {
-    font-size: 2rem;
-    background: url(${bg});
+    font-family: 'Merriweather', serif;
+    font-size: 1.65rem;
+    background: #EFEDE7;
+    color: rgba(0, 0, 0, 0.9);
+  }
+  a, input {
+    outline-color: var(--yellow);
   }
 `;
 
