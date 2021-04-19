@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ContactForm from "../components/ContactForm";
 import Stack from "../components/Stack";
@@ -58,6 +58,13 @@ const MainStyles = styled.main`
 `;
 
 const IndexPage = () => {
+  const [pic, setPic] = useState();
+  useEffect(() => {
+    fetch(`https://api.github.com/users/ostafinskim`)
+      .then((r) => r.json())
+      .then((data) => setPic(data.avatar_url))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <>
       <MainStyles>
@@ -68,7 +75,9 @@ const IndexPage = () => {
             I&#39;m Miro.
             <span>front-end developer</span>
           </h1>
-          <div className="pic"></div>
+          <div className="pic">
+            <img src={pic} alt="Me" />
+          </div>
         </section>
         <Stack />
       </MainStyles>
