@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import styled from "styled-components";
 import css from "../assets/icons/css3-alt.svg";
 import git from "../assets/icons/git.svg";
@@ -79,48 +78,48 @@ const Stack = () => {
     <StackStyled>
       <section className="stack">
         <h2>Technologies stack:</h2>
-        <Link to="https://git-scm.com/">
+        <a href="https://git-scm.com/">
           <img src={git} alt="Git icon" />
-        </Link>
-        <Link to="https://developer.mozilla.org/en-US/docs/Web/HTML">
+        </a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">
           <img src={html} alt="Html icon" />
-        </Link>
-        <Link to="https://developer.mozilla.org/en-US/docs/Web/CSS">
+        </a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">
           <img src={css} alt="Css icon" />
-        </Link>
-        <Link to="https://sass-lang.com/">
+        </a>
+        <a href="https://sass-lang.com/">
           <img src={sass} alt="Sass icon" />
-        </Link>
-        <Link to="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
+        </a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
           <img src={js} alt="JavaScript icon" />
-        </Link>
-        <Link to="https://reactjs.org/">
+        </a>
+        <a href="https://reactjs.org/">
           <img src={react} alt="ReactJS icon" />
-        </Link>
-        <Link to="https://nodejs.org/en/">
+        </a>
+        <a href="https://nodejs.org/en/">
           <img src={node} alt="Node.js icon" />
-        </Link>
-        <Link to="https://www.npmjs.com/">
+        </a>
+        <a href="https://www.npmjs.com/">
           <img src={npm} alt="Npm icon" />
-        </Link>
-        <Link to="https://webpack.js.org/">
+        </a>
+        <a href="https://webpack.js.org/">
           <img src={webpack} alt="Webpack icon" />
-        </Link>
+        </a>
       </section>
       <section className="stack stack--2r">
         <h2 className="todo-h">I wanted to learn next:</h2>
-        <Link to="https://www.typescriptlang.org/">
+        <a href="https://www.typescriptlang.org/">
           <img src={typescript} alt="Typescript icon" />
-        </Link>
-        <Link to="https://nextjs.org/">
+        </a>
+        <a href="https://nextjs.org/">
           <img src={next} alt="NextJS icon" />
-        </Link>
-        <Link to="https://graphql.org/">
+        </a>
+        <a href="https://graphql.org/">
           <img src={graphql} alt="GraphQL icon" />
-        </Link>
-        <Link to="https://www.gatsbyjs.com/">
+        </a>
+        <a href="https://www.gatsbyjs.com/">
           <img src={gatsby} alt="GatsbyJS icon" />
-        </Link>
+        </a>
       </section>
     </StackStyled>
   );
