@@ -37,7 +37,7 @@ export default function Nav() {
         <ul>
           <Link to="/">home</Link>
           <Link to="/blog/">blog</Link>
-          <Link to="https://github.com/ostafinskim">github</Link>
+          <a href="https://github.com/ostafinskim">github</a>
         </ul>
       </NavStyles>
     </>
