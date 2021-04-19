@@ -20,5 +20,13 @@ module.exports = {
         overlayDrafts: !isProd,
       },
     },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        options: {
+          displayName: false,
+        },
+      },
+    },
   ],
 };
