@@ -33,6 +33,9 @@ const FormStyles = styled.section`
       }
     }
   }
+  @media (max-width: 660px) {
+    margin: 1.6rem;
+  }
   .inner {
     grid-column: 1 / -1;
     grid-row: 1 / 2;
