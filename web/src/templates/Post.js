@@ -16,7 +16,6 @@ export const query = graphql`
   }
 `;
 const BlogPostTemplate = ({ data: { post } }) => {
-  console.log(post.mainImage.asset.fluid.src);
   return (
     <>
       <Container>
