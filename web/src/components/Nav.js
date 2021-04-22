@@ -7,8 +7,10 @@ const NavStyles = styled.nav`
   display: flex;
   align-items: center;
   ul {
+    height: 100%;
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     margin-right: 1rem;
   }
