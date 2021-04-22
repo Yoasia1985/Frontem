@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: inherit;
   }
   html {
+    height: 100%;
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-size: 62.5%;
