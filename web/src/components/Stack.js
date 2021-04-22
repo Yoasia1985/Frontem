@@ -59,10 +59,13 @@ const StackStyled = styled.div`
         z-index: -1;
       }
     }
+    a {
+      width: 9rem;
+      height: 9rem;
+    }
     img {
-      display: block;
-      width: 8rem;
-      padding-bottom: 0.5rem;
+      width: 100%;
+      height: 100%;
       border-bottom: 3px solid transparent;
       transition: all 0.3s ease;
       &:hover {
@@ -77,7 +80,7 @@ const Stack = () => {
   return (
     <StackStyled>
       <section className="stack">
-        <h2>Technologies stack:</h2>
+        <h2>Current stack:</h2>
         <a href="https://git-scm.com/">
           <img src={git} alt="Git icon" />
         </a>
@@ -107,7 +110,7 @@ const Stack = () => {
         </a>
       </section>
       <section className="stack stack--2r">
-        <h2 className="todo-h">I wanted to learn next:</h2>
+        <h2 className="todo-h">Focused on next:</h2>
         <a href="https://www.typescriptlang.org/">
           <img src={typescript} alt="Typescript icon" />
         </a>
