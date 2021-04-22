@@ -6,8 +6,12 @@ require("dotenv").config({
 const clientConfig = require("./client-config");
 
 const isProd = process.env.NODE_ENV === "production";
-
 module.exports = {
+  siteMetadata: {
+    title: `Frontem`,
+    siteUrl: `https://frontem.netlify.app`,
+    description: `Miro's personal blog`,
+  },
   plugins: [
     "gatsby-plugin-postcss",
     "gatsby-plugin-react-helmet",
