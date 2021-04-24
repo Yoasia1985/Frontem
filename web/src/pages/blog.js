@@ -1,15 +1,40 @@
 import React from "react";
+import { graphql } from "gatsby";
 import PostsList from "../components/PostsList";
 import styled from "styled-components";
 
 const BlogPageStyles = styled.main`
-  grid-column: 1 / -1;
+  min-height: 100vh;
 `;
-
-export default function BlogPage() {
+export const query = graphql`
+  {
+    posts: allSanityPost {
+      nodes {
+        id
+        title
+        body {
+          children {
+            text
+          }
+        }
+        slug {
+          current
+        }
+        mainImage {
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+export default function BlogPage({ data }) {
   return (
     <BlogPageStyles>
-      <PostsList></PostsList>
+      <PostsList data={data}></PostsList>
     </BlogPageStyles>
   );
 }
