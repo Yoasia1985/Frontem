@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const ContainerStyles = styled.div`
+  min-height: 100vh;
+  height: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr minmax(29rem, 60ch) 1fr;
