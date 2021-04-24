@@ -6,9 +6,8 @@ import insta from "../assets/icons/instagram.svg";
 const FooterStyles = styled.footer`
   grid-column: 1 / -1;
   padding: 3.5rem 0;
-  height: 100%;
   background: rgb(5, 22, 34);
-
+  margin-top: auto;
   p {
     color: white;
     text-align: center;
